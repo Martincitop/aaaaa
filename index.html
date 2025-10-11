@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti 💖</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      background: linear-gradient(180deg, #ffe1eb, #fff0f5);
+      color: #333;
+      margin-top: 20%;
+    }
+    button {
+      background-color: #ff6fa1;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #ff4f89;
+      transform: scale(1.05);
+    }
+    #mensaje {
+      margin-top: 40px;
+      font-size: 24px;
+      color: #ff4f89;
+      display: none;
+      white-space: pre-wrap;
+      min-height: 2em;
+    }
+    #firma {
+      margin-top: 50px;
+      font-size: 18px;
+      color: #888;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="mostrarMensaje()">Clickea si te interesa 💌</button>
+
+  <p id="mensaje"></p>
+  <p id="firma">– de martincito para ti katitaaaa 💞</p>
+
+  <script>
+    function mostrarMensaje() {
+      const texto = "Eres tan bonita que se me acelera el corazón cuando pienso en ti ❤️";
+      const mensaje = document.getElementById("mensaje");
+      const firma = document.getElementById("firma");
+      mensaje.style.display = "block";
+      mensaje.textContent = "";
+      firma.style.opacity = "0";
+      let i = 0;
+
+      function escribir() {
+        if (i < texto.length) {
+          mensaje.textContent += texto.charAt(i);
+          i++;
+          setTimeout(escribir, 50); // velocidad de escritura
+        } else {
+          // aparece la firma con fade
+          setTimeout(() => {
+            firma.style.opacity = "1";
+          }, 600);
+        }
+      }
+      escribir();
+    }
+  </script>
+
+</body>
+</html>
