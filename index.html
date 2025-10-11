@@ -11,6 +11,7 @@
       background: linear-gradient(180deg, #ffe1eb, #fff0f5);
       color: #333;
       margin-top: 20%;
+      padding: 0 20px;
     }
     button {
       background-color: #ff6fa1;
@@ -21,6 +22,7 @@
       border-radius: 8px;
       cursor: pointer;
       transition: 0.3s;
+      margin-top: 15px;
     }
     button:hover {
       background-color: #ff4f89;
@@ -45,33 +47,49 @@
 </head>
 <body>
 
-  <button onclick="mostrarMensaje()">Clickea si te interesa 💌</button>
+  <button id="btn1" onclick="paso1()">Clickea si te interesa 💌</button>
+  <button id="btn2" onclick="paso2()" style="display:none;">¿Estás segura? 😏</button>
+  <button id="btn3" onclick="mostrarMensaje()" style="display:none;">¿Segura segura? 😳</button>
 
   <p id="mensaje"></p>
   <p id="firma">– de martincito para ti katitaaaa 💞</p>
 
   <script>
+    function paso1() {
+      document.getElementById("btn1").style.display = "none";
+      document.getElementById("btn2").style.display = "inline-block";
+    }
+
+    function paso2() {
+      document.getElementById("btn2").style.display = "none";
+      document.getElementById("btn3").style.display = "inline-block";
+    }
+
     function mostrarMensaje() {
       const texto = "Eres tan bonita que se me acelera el corazón cuando pienso en ti ❤️";
       const mensaje = document.getElementById("mensaje");
       const firma = document.getElementById("firma");
+
+      // Oculta el último botón y muestra el mensaje
+      document.getElementById("btn3").style.display = "none";
       mensaje.style.display = "block";
       mensaje.textContent = "";
       firma.style.opacity = "0";
+
       let i = 0;
 
       function escribir() {
         if (i < texto.length) {
           mensaje.textContent += texto.charAt(i);
           i++;
-          setTimeout(escribir, 50); // velocidad de escritura
+          setTimeout(escribir, 50); // velocidad de escritura (50ms por letra)
         } else {
-          // aparece la firma con fade
           setTimeout(() => {
             firma.style.opacity = "1";
           }, 600);
         }
       }
+
       escribir();
     }
   </script>
